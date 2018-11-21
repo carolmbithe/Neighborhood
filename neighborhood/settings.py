@@ -39,13 +39,42 @@ STATICFILES_DIRS = [
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
+#development
+if config('MODE')=="dev":
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.postgresql_psycopg2',
+           'NAME': config('DB_NAME'),
+           'USER': config('DB_USER'),
+           'PASSWORD': config('DB_PASSWORD'),
+           'HOST': config('DB_HOST'),
+           'PORT': '',
+        }
+    }
+# production
+else:
+    DATABASES = {
+    'default':dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+    }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS',cast=Csv())
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'g-7(z6&+s7ls%52o9&94u0)u6(n6rw^34%&gb$o3xoodznl1@n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+# SECURITY WARNING: keep the secret key used in production secret!
+
+# SECURITY WARNING: don't run with debug turned on in production!
+
 
 
 # Application definition
@@ -53,6 +82,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
 
     'updates.apps.UpdatesConfig',
+    'bootstrap3',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,6 +92,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,13 +127,6 @@ WSGI_APPLICATION = 'neighborhood.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -134,6 +159,12 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#configure Django App for Heroku
+django_heroku.settings(locals())
 
 
 #
