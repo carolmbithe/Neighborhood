@@ -7,12 +7,12 @@ from django.contrib.auth.models import User
 class NeighborHood(models.Model):
 
     name=models.CharField(max_length =40)
-    occupant=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    # occupant = models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "profile")
     location=models.CharField(max_length=40)
     count=models.PositiveIntegerField(blank=True,null=True)
 
     def __str__(self):
-        return self.user
+        return self.name
 
     def save_neighborhood(self):
         self.save()
@@ -20,12 +20,12 @@ class NeighborHood(models.Model):
         self.delete()
 
 class User(models.Model):
-    user_name = models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "profile")
+    user_name =models.CharField(max_length=40,blank=True,null=True)
     neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE)
     email=models.EmailField(blank=True,null=True)
 
     def __str__(self):
-        return self.user
+        return self.user_name
 
     def save_user(self):
         self.save()
@@ -42,3 +42,9 @@ class Business(models.Model):
         self.save()
     def delete_business(self):
         self.delete()
+
+
+    @classmethod
+    def get_all_businesses(cls):
+        businesses=cls.objects.all()
+        return businesses

@@ -1,1 +1,11 @@
+<div class="container">
 <h1>Welcome to the neighborhood</h1>
+{% for business in businesses %}
+
+        <ul>
+          <li>{{business.business_name}}</li>
+        </ul>
+
+
+          {% endfor %}
+</div>
