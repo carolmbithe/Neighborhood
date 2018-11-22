@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class NeighborHood(models.Model):
-    name=models.CharField(max_length =400)
+
+    name=models.CharField(max_length =40)
+    occupant=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     location=models.CharField(max_length=40)
     count=models.PositiveIntegerField(blank=True,null=True)
 
