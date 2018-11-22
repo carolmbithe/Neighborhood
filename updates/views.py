@@ -7,8 +7,8 @@ from .models import Business,NeighborHood,User
 
 
 
-# Create your views here.
-# @login_required(login_url='/accounts/login/')
+#Create your views here.
+@login_required(login_url='/accounts/login/')
 def index(request):
     businesses=Business.get_all_businesses()
 

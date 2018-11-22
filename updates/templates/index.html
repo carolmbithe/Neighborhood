@@ -1,3 +1,21 @@
+
+{%extends 'base.html'%}
+
+{% load bootstrap3 %}
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+{% block content %}
+{{block.super}}
+
 <div class="container">
 <h1>Welcome to the neighborhood</h1>
 {% for business in businesses %}
@@ -9,3 +27,6 @@
 
           {% endfor %}
 </div>
+{%endblock%}
+</body>
+</html>
