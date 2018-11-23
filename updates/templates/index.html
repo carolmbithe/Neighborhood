@@ -35,13 +35,13 @@
 
 </div>
 
-<div class="row">
+
   <div class="col-md-6">
 {% for neighborhood in neighborhoods %}
 
         <ul>
           <li>{{neighborhood.count}}</li>
-          <li>{{neighborhood.name}}</li>
+          <li><a href="{% url 'neighborhood' neighborhood.id %}">{{neighborhood.name}}</a></li>
         </ul>
 
 </div>
@@ -52,7 +52,6 @@
           {% endfor %}
 
 </div>
-
 {%endblock%}
 </body>
 </html>

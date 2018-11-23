@@ -20,3 +20,8 @@ def profile(request):
     current_user=request.user
 
     return render(request,'profile.html')
+
+def neighborhood(request,neighborhood_id):
+    neighborhood=NeighborHood.objects.get(id=neighborhood_id)
+
+    return render(request,'neighborhood.html',{"neighborhood":neighborhood})
