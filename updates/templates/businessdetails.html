@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+{% block content %}
+{{block.super}}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{business.business_image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <h1 class="text-center">{{business.business_name}}</h1>
+   </div>
+
+   <div class="row">
+     <p>{{business.neighborhood}}</p>
+
+
+</div>
+</div>
+{% endblock %}
+
+</body>
+</html>

@@ -16,7 +16,7 @@
   {% if businesses %}
     {% for business in businesses %}
       <div class="col-sm-6 col-md-3">
-          <h1>{{business.business_name}}</h1>
+          <a href="/businessdetails/{{business.id}}"><h1>{{business.business_name}}</h1></a>
       </div>
     {% endfor %}
   {% endif %}

@@ -109,3 +109,10 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+
+def businessdetails(request,business_id):
+
+    business=Business.objects.get(id=business_id)
+
+    return render(request,"businessdetails.html",{"business":business})
