@@ -73,10 +73,15 @@ class Business(models.Model):
     #     business=cls.objects.get(id=business_id)
     #     return business
 
+    @classmethod
+    def search_by_business_name(cls,search_term):
+        businesses = cls.objects.filter(business_name__icontains=search_term)
+        return businesses
+
 class Post(models.Model):
     post_image=models.ImageField(upload_to='posts',null=True)
     owner=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
-    title=models.TextField()
+    title=models.CharField(max_length =30)
     post=models.TextField()
 
 

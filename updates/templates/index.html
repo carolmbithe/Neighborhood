@@ -23,9 +23,10 @@
   <div class="col-md-6">
 {% for business in businesses %}
 
-        <ul>
-          <li>{{business.business_name}}</li>
-        </ul>
+        <img src="{{business.business_image.url}}" class="img-responsive" alt="Image">
+
+          <p>{{business.business_name}}</p>
+
 
 </div>
 {% empty %}
@@ -42,10 +43,10 @@
 
   <div class="col-md-6">
 
-        <ul>
-          <li>{{neighborhood.count}}</li>
-          <li><a href="{% url 'neighborhood' neighborhood.id %}">{{neighborhood.name}}</a></li>
-        </ul>
+          <img src="{{neighborhood.neighborhood_image.url}}" class="img-responsive" alt="Image">
+          <p>{{neighborhood.count}}</p>
+          <a href="{% url 'neighborhood' neighborhood.id %}">{{neighborhood.name}}</a>
+
 
 </div>
 {% empty %}
@@ -59,9 +60,9 @@
               <p>POSTS</p>
           {% for post in posts %}
 
-                  <ul>
-                    <li>{{post.post}}</li>
-                  </ul>
+                  <img src="{{post.post_image.url}}" class="img-responsive" alt="Image">
+                    <p>{{post.post}}</p>
+
 
           </div>
           {% empty %}
