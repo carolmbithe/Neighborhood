@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 
 class NeighborHood(models.Model):
 
+    neighborhood_image=models.ImageField(upload_to='neighborhoods',null=True)
+
     name=models.CharField(max_length =40)
     # occupant = models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "profile")
     location=models.CharField(max_length=40)
@@ -31,7 +33,7 @@ class NeighborHood(models.Model):
 
 class Userprofile(models.Model):
 
-    # user_name =models.CharField(max_length=40,blank=True,null=True)
+    profile_image=models.ImageField(upload_to='userprofiles',null=True)
     user_name=models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "user")
     neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE)
     email=models.EmailField(blank=True,null=True)
@@ -49,6 +51,7 @@ class Userprofile(models.Model):
 
 
 class Business(models.Model):
+    business_image=models.ImageField(upload_to='businesses',null=True)
     business_name=models.CharField(max_length =30)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE)
@@ -65,8 +68,13 @@ class Business(models.Model):
         businesses=cls.objects.all()
         return businesses
 
-class Post(models.Model):
+    # @classmethod
+    # def get_business_by_id(cls,business_id):
+    #     business=cls.objects.get(id=business_id)
+    #     return business
 
+class Post(models.Model):
+    post_image=models.ImageField(upload_to='posts',null=True)
     owner=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     title=models.TextField()
     post=models.TextField()
