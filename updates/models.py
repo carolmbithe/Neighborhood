@@ -43,6 +43,11 @@ class Userprofile(models.Model):
     def delete_userprofile(self):
         self.delete()
 
+    def update_neighborhood(self,neighborhood):
+        self.neighborhood=neighborhood
+        self.save()
+
+
 class Business(models.Model):
     business_name=models.CharField(max_length =30)
     user=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
@@ -59,3 +64,15 @@ class Business(models.Model):
     def get_all_businesses(cls):
         businesses=cls.objects.all()
         return businesses
+
+class Post(models.Model):
+
+    owner=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    title=models.TextField()
+    post=models.TextField()
+
+
+    @classmethod
+    def get_all_posts(cls):
+        posts=cls.objects.all()
+        return posts

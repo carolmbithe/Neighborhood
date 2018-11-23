@@ -35,9 +35,11 @@
 
 </div>
 
+<div class="row">
+  <p>neighborhoods</p>
+  {% for neighborhood in neighborhoods %}
 
   <div class="col-md-6">
-{% for neighborhood in neighborhoods %}
 
         <ul>
           <li>{{neighborhood.count}}</li>
@@ -50,6 +52,25 @@
     <h2 class="text-center">There are no neighborhoods yet</h2>
 
           {% endfor %}
+</div>
+          <div class="row">
+            <div class="col-md-6">
+              <p>POSTS</p>
+          {% for post in posts %}
+
+                  <ul>
+                    <li>{{post.post}}</li>
+                  </ul>
+
+          </div>
+          {% empty %}
+
+              <h2 class="text-center">There are no Posts yet</h2>
+
+                    {% endfor %}
+
+          </div>
+
 
 </div>
 {%endblock%}
