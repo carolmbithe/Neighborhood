@@ -4,5 +4,7 @@ from django.conf import settings
 
 urlpatterns=[
     url('^$',views.index,name='index'),
+    url(r'^profile/',views.profile,name='profile'),
+
 
 ]

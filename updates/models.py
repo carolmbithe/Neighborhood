@@ -19,13 +19,19 @@ class NeighborHood(models.Model):
     def delete_neighborhood(self):
         self.delete()
 
+    @classmethod
+    def get_all_neighborhoods(cls):
+        neighborhoods=cls.objects.all()
+        return neighborhoods
+
 class User(models.Model):
-    user_name =models.CharField(max_length=40,blank=True,null=True)
+
+    # user_name =models.CharField(max_length=40,blank=True,null=True)
+    user_name=models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "user")
     neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE)
     email=models.EmailField(blank=True,null=True)
 
-    def __str__(self):
-        return self.user_name
+
 
     def save_user(self):
         self.save()

@@ -11,5 +11,12 @@ from .models import Business,NeighborHood,User
 @login_required(login_url='/accounts/login/')
 def index(request):
     businesses=Business.get_all_businesses()
+    neighborhoods=NeighborHood.get_all_neighborhoods()
 
-    return render(request,'index.html',{"businesses":businesses})
+
+    return render(request,'index.html',{"businesses":businesses,"neighborhoods":neighborhoods})
+
+def profile(request):
+    current_user=request.user
+
+    return render(request,'profile.html')
