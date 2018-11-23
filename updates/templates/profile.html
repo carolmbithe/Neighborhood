@@ -1,7 +1,10 @@
 <h1>Profile page</h1>
 
+<p><a href="{%url 'edit-profile'%}">Edit profile</a></p>
+
+
 <p>{{request.user.username}}</p>
-<p>{{user.neighborhood}}</p>
-<p>{{user.email}}</p>
+<p>Name of the neighborhood{{userprofile.neighborhood}}</p>
+<p>User email{{userprofile.email}}</p>
 
 <p>Goods</p>

@@ -29,7 +29,7 @@ class NeighborHood(models.Model):
     #     neighborhoods=cls.objects.all()
     #     return neighborhoods
 
-class User(models.Model):
+class Userprofile(models.Model):
 
     # user_name =models.CharField(max_length=40,blank=True,null=True)
     user_name=models.OneToOneField(User,null = True,on_delete=models.CASCADE,related_name = "user")
@@ -38,9 +38,9 @@ class User(models.Model):
 
 
 
-    def save_user(self):
+    def save_userprofile(self):
         self.save()
-    def delete_user(self):
+    def delete_userprofile(self):
         self.delete()
 
 class Business(models.Model):
