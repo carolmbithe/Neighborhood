@@ -7,6 +7,11 @@ class NewProfileForm(forms.ModelForm):
         model=Userprofile
         exclude=['user_name']
 
+class NewBusinessForm(forms.ModelForm):
+    class Meta:
+        model=Business
+        exclude=['user']
+
 class UpdateForm(forms.ModelForm):
     class Meta:
         model=Userprofile
@@ -15,7 +20,7 @@ class UpdateForm(forms.ModelForm):
 class NewNeighborhoodForm(forms.ModelForm):
     class Meta:
         model=NeighborHood
-        fields=['name','location','count']
+        fields=['neighborhood_image','name','location','count']
 
 class NewPostForm(forms.ModelForm):
     class Meta:

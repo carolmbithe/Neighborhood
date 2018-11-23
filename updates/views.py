@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Business,NeighborHood,Userprofile,Post
-from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm
+from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm,NewBusinessForm
 
 
 
@@ -32,6 +32,20 @@ def post(request):
     else:
         form=NewPostForm()
     return render(request,'post.html',{"form":form})
+
+def business(request):
+    current_user=request.user
+
+    if request.method == 'POST':
+        form =NewBusinessForm(request.POST,request.FILES)
+        if form.is_valid():
+            business=form.save(commit=False)
+            business.user = current_user
+            business.save()
+        return redirect('index')
+    else:
+        form=NewBusinessForm()
+    return render(request,'business.html',{"form":form})
 
 
 def profile(request):
@@ -79,7 +93,7 @@ def update_neighborhood(request):
         form=NewNeighborhoodForm()
     return render(request,'update_neighborhood.html',{"form":form})
 
-def update_profile(request,user_name):
+def update_profile(request):
     current_user=request.user
     print(current_user)
     if request.method == 'POST':
@@ -89,9 +103,9 @@ def update_profile(request,user_name):
             update.user_name = current_user
             update.save()
         return redirect('profile')
-    elif Userprofile.objects.get(user_name=current_user):
-        profile= Userprofile.objects.get(user_name=current_user)
-        form = NewProfileForm(instance=profile)
+    # elif Userprofile.objects.get(user_name=current_user):
+    #     profile= Userprofile.objects.get(user_name=current_user)
+    #     form = NewProfileForm(instance=profile)
     else:
         form=NewProfileForm()
     return render(request,'update_profile.html',{"form":form,"current_user":current_user})
