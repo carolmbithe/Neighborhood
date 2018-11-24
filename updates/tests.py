@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Business,NeighborHood,Userprofile,Post
 
-
+    
 # Create your tests here.
 class NeighborHoodTestClass(TestCase):
     #Set up method
