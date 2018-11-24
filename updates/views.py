@@ -93,26 +93,40 @@ def update_neighborhood(request):
         form=NewNeighborhoodForm()
     return render(request,'update_neighborhood.html',{"form":form})
 
-def update_profile(request):
-    current_user=request.user
-    # print(current_user)
-    if request.method == 'POST':
-        form =UpdateForm(request.POST,request.FILES)
-        if form.is_valid():
-            # update=form.save(commit=False)
-
-            userprofile=form.save(commit=False)
-            # userprofile=Userprofile.objects.get(pk=userprofile_id)
-            # form =UpdateForm(request.POST,instance=userprofile)
-            # update.user_name = current_user
-            update.save()
+def update_profile(request,id):
+    instance=get_object_or_404(Userprofile,id=id)
+    form=UpdateForm(request.POST or None,instance=instance)
+    if form.is_valid():
+        form.save
         return redirect('profile')
-    # elif Userprofile.objects.get(user_name=current_user):
-    # #     profile= Userprofile.objects.get(user_name=current_user)
-    # #     form = NewProfileForm(instance=profile)
-    else:
-        form=UpdateForm()
-    return render(request,'update_profile.html',{"form":form})
+    return render(request,'update_profile.html', {'form': form})
+
+    # profile=request.user.get_profile()
+    # current_user=request.user,instance=profile)
+    # form =UpdateForm(request.POST)
+    #
+    # # print(current_user)
+    # if request.method == 'POST':
+    #      userprofile=form.save(commit=False)
+    #
+    #     # form =UpdateForm(request.POST)
+    #     if form.is_valid():
+    #         # update=form.save(commit=False)
+    #
+    #         # userprofile=form.save(commit=False)
+    #         # userprofile.user_name = current_user
+    #
+    #         # userprofile=Userprofile.objects.get(pk=userprofile_id)
+    #         # form =UpdateForm(request.POST,instance=userprofile)
+    #         # update.user_name = current_user
+    #         userprofile.save()
+    #     return redirect('profile')
+    # # elif Userprofile.objects.get(user_name=current_user):
+    # # #     profile= Userprofile.objects.get(user_name=current_user)
+    # # #     form = NewProfileForm(instance=profile)
+    # else:
+    #     form=UpdateForm()
+    # return render(request,'update_profile.html',{"form":form})
 
 
 

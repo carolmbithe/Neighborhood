@@ -17,19 +17,29 @@
 {% block content %}
 {{block.super}}
 <div class="container">
+<div class="row">
+<div class="col-md-6">
+
+
 <h1>Profile page</h1>
-
-<p><a href="{%url 'edit-profile'%}">Edit profile</a></p>
-<p><a href="{%url 'update-neighborhood'%}">Update neighborhood</a></p>
-
-
-
+<style>
+    img.radius {
+    border-radius: 70%;
+    }
+    </style>
+<img src="{{userprofile.profile_image.url}}"  class="radius" class="img-responsive" alt="Image" style="width:200px;height:200px;">
 <p>{{request.user.username}}</p>
-<img src="{{userprofile.profile_image.url}}" class="img-responsive" alt="Image">
-<p><strong>Name of the neighborhood</strong>{{userprofile.neighborhood}}</p>
 <p>User email{{userprofile.email}}</p>
 
-<p>Goods</p>
+</div>
+<div class="col-md-6">
+
+
+<p><strong>Name of the neighborhood</strong>{{userprofile.neighborhood}}</p>
+<p><a href="{%url 'edit-profile'%}">Edit profile</a></p>
+<p><a href="{%url 'update-neighborhood'%}">Update neighborhood</a></p>
+</div>
+</div>
 </div>
 
 {%endblock%}
