@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Business,NeighborHood,Userprofile,Post
 
-    
+
 # Create your tests here.
 class NeighborHoodTestClass(TestCase):
     #Set up method
@@ -22,6 +22,18 @@ class NeighborHoodTestClass(TestCase):
         self.new_neighborhood.save_neighborhood()
         self.new_neighborhood.delete_neighborhood()
 
+
+    # def find_neighborhood_by_id(self):
+    #     neighborhood=NeighborHood.find_neighborhood_by_id()
+    #     self.assertTrue(len(neighborhood)>0)
+
+    def test_update_occupants(self):
+        self.new_neighborhood.save_neighborhood()
+        self.new_neighborhood = NeighborHood.objects.filter(id=1)
+        neighborhood = self.new_neighborhood
+        neighborhood.update_occupants(40)
+        self.updated_neighborhood = NeighborHood.objects.get(id=1)
+        self.assertEqual(self.updated_neighborhood.occupants_count,40)
 
 
 class UserprofileTestClass(TestCase):
@@ -65,6 +77,10 @@ class BuinessTestClass(TestCase):
 
         self.new_business.save_business()
         self.new_business.delete_business()
+
+    def test_find_business_by_id(cls,business_id):
+        business=Business.find_business_by_id()
+        self.assertTrue(len(business)>0)
 
 
 class PostTestClass(TestCase):

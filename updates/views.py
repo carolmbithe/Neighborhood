@@ -95,20 +95,25 @@ def update_neighborhood(request):
 
 def update_profile(request):
     current_user=request.user
-    print(current_user)
+    # print(current_user)
     if request.method == 'POST':
-        form =NewProfileForm(request.POST,request.FILES)
+        form =UpdateForm(request.POST,request.FILES)
         if form.is_valid():
-            update=form.save(commit=False)
-            update.user_name = current_user
+            # update=form.save(commit=False)
+
+            userprofile=form.save(commit=False)
+            # userprofile=Userprofile.objects.get(pk=userprofile_id)
+            # form =UpdateForm(request.POST,instance=userprofile)
+            # update.user_name = current_user
             update.save()
         return redirect('profile')
     # elif Userprofile.objects.get(user_name=current_user):
-    #     profile= Userprofile.objects.get(user_name=current_user)
-    #     form = NewProfileForm(instance=profile)
+    # #     profile= Userprofile.objects.get(user_name=current_user)
+    # #     form = NewProfileForm(instance=profile)
     else:
-        form=NewProfileForm()
-    return render(request,'update_profile.html',{"form":form,"current_user":current_user})
+        form=UpdateForm()
+    return render(request,'update_profile.html',{"form":form})
+
 
 
 def search_results(request):

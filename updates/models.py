@@ -56,7 +56,7 @@ class Userprofile(models.Model):
     def update_neighborhood(self,neighborhood):
         self.neighborhood=neighborhood
         self.save()
-
+        # NeighborHood.objects.filter(id=userprofile_id).update(neighborhood="neighborhood_id")
 
 class Business(models.Model):
     business_image=models.ImageField(upload_to='businesses',null=True)
@@ -74,7 +74,7 @@ class Business(models.Model):
 
 
     @classmethod
-    def get_business_by_id(cls,business_id):
+    def find_business_by_id(cls,business_id):
         business=cls.objects.get(id=business_id)
         return business
 
