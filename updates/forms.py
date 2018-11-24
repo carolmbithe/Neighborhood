@@ -20,7 +20,7 @@ class UpdateForm(forms.ModelForm):
 class NewNeighborhoodForm(forms.ModelForm):
     class Meta:
         model=NeighborHood
-        fields=['neighborhood_image','name','location','count']
+        fields=['neighborhood_image','name','location','occupants_count']
 
 class NewPostForm(forms.ModelForm):
     class Meta:
