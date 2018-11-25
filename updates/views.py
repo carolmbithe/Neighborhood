@@ -10,15 +10,16 @@ from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm,New
 
 
 #Create your views here.
+
+
 @login_required(login_url='/accounts/login/')
 def index(request):
     businesses=Business.get_all_businesses()
     neighborhoods=NeighborHood.get_all_neighborhoods()
     posts=Post.get_all_posts()
-
-
+#
     return render(request,'index.html',{"businesses":businesses,"neighborhoods":neighborhoods,"posts":posts})
-
+#
 def post(request):
     current_user=request.user
 

@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url('^$',views.index,name='index'),
+
     url(r'^profile/',views.profile,name='profile'),
     url(r'^edit/profile$',views.edit_profile,name='edit-profile'),
     # url(r'^update/profile/(?P<user_name>\w{0,50})',views.update_profile,name='update-profile'),

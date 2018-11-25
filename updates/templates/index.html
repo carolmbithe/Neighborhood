@@ -15,17 +15,21 @@
 <body>
 {% block content %}
 {{block.super}}
-
+<section>
 <div class="container">
 <h1>Welcome to the neighborhood</h1>
 <div class="row">
   <p>Businesses</p>
   <div class="col-md-6">
 {% for business in businesses %}
+      <figure>
 
         <img src="{{business.business_image.url}}" class="img-responsive" alt="Image">
-
+        <figcaption>Business</figcaption>
           <p>{{business.business_name}}</p>
+
+        </figure>
+
 
 
 </div>
@@ -36,7 +40,10 @@
           {% endfor %}
 
 </div>
-
+</div>
+</section>
+<section>
+  <div class="container">
 <div class="row">
   <p>neighborhoods</p>
   {% for neighborhood in neighborhoods %}
@@ -55,6 +62,11 @@
 
           {% endfor %}
 </div>
+</div>
+</section>
+
+<section>
+<div class="container">
           <div class="row">
             <div class="col-md-6">
               <p>POSTS</p>
@@ -72,8 +84,6 @@
                     {% endfor %}
 
           </div>
-
-
 </div>
 {%endblock%}
 </body>
