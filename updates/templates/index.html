@@ -15,76 +15,94 @@
 <body>
 {% block content %}
 {{block.super}}
-<section>
 <div class="container">
-<h1>Welcome to the neighborhood</h1>
-<div class="row">
-  <p>Businesses</p>
-  <div class="col-md-6">
-{% for business in businesses %}
-      <figure>
 
+  <h1 class="text-center">Be in the loop</h1>
+  <section>
+    <div class="row">
+      <h1 class="text-center">Latest posts</h1>
+      {% for post in posts %}
+
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+
+
+
+      <p>{{post.title}}</p>
+      <p>{{post.owner}}</p>
+        <img src="{{post.post_image.url}}" class="img-responsive" alt="Image">
+        <p>{{post.post}}</p>
+      </div>
+      {% empty %}
+
+          <h2 class="text-center">No posts yet</h2>
+
+
+        {% endfor %}
+
+
+
+    </div>
+
+  </section>
+
+  <section>
+    <div class="row">
+      <h1 class="text-center">Latest posts</h1>
+
+      {% for business in businesses %}
+
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+
+
+
+      <p>{{business.business_name}}</p>
         <img src="{{business.business_image.url}}" class="img-responsive" alt="Image">
-        <figcaption>Business</figcaption>
-          <p>{{business.business_name}}</p>
+        <p>{{business.neighborhood}}</p>
+      </div>
+      {% empty %}
 
-        </figure>
+          <h2 class="text-center">No Businesses yet</h2>
 
 
+        {% endfor %}
+
+
+
+    </div>
+
+  </section>
+
+  <section>
+    <div class="row">
+      <h1 class="text-center">Other Neighbourhoods</h1>
+      {% for neighborhood in neighborhoods %}
+
+      <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
+
+
+
+      <p>{{neighborhood.title}}</p>
+
+        <img src="{{neighborhood.neighborhood_image.url}}" class="img-responsive" alt="Image">
+        <p>{{neighborhood.name}}</p>
+        <a href="{% url 'neighborhood' neighborhood.id %}" class="btn btn-info" role="button">View more details</a>
+
+      </div>
+      {% empty %}
+
+          <h2 class="text-center">No other neighborhoods</h2>
+
+
+        {% endfor %}
+
+
+
+    </div>
+
+  </section>
 
 </div>
-{% empty %}
 
-    <h2 class="text-center">There are no Projects yet</h2>
-
-          {% endfor %}
-
-</div>
-</div>
-</section>
-<section>
-  <div class="container">
-<div class="row">
-  <p>neighborhoods</p>
-  {% for neighborhood in neighborhoods %}
-
-  <div class="col-md-6">
-
-          <img src="{{neighborhood.neighborhood_image.url}}" class="img-responsive" alt="Image">
-          <p>{{neighborhood.count}}</p>
-          <a href="{% url 'neighborhood' neighborhood.id %}">{{neighborhood.name}}</a>
-
-
-</div>
-{% empty %}
-
-    <h2 class="text-center">There are no neighborhoods yet</h2>
-
-          {% endfor %}
-</div>
-</div>
-</section>
-
-<section>
-<div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <p>POSTS</p>
-          {% for post in posts %}
-
-                  <img src="{{post.post_image.url}}" class="img-responsive" alt="Image">
-                    <p>{{post.post}}</p>
-
-
-          </div>
-          {% empty %}
-
-              <h2 class="text-center">There are no Posts yet</h2>
-
-                    {% endfor %}
-
-          </div>
-</div>
 {%endblock%}
 </body>
 </html>

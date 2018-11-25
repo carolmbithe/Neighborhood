@@ -14,9 +14,14 @@
 <body>
 {% block content %}
 {{block.super}}
+<div class="container">
+  <h1><strong>Name</strong>{{neighborhood.name}}</h1>
 
-<p><strong>Name</strong>{{neighborhood.name}}</p>
+
+<img src="{{neighborhood.neighborhood_image.url}}" class="img-responsive" alt="Image">
+
 <p><strong>Location</strong>{{neighborhood.location}}</p>
-<p><strong>Count</strong>{{neighborhood.count}}</p>
+<p><strong>Count</strong>{{neighborhood.occupants_count}}</p>
+</div>
 
 {%endblock%}

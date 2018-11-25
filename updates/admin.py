@@ -6,5 +6,7 @@ from .models import NeighborHood,Userprofile,Business,Post,PoliceCenters,HealthC
 admin.site.register(NeighborHood)
 admin.site.register(Userprofile)
 admin.site.register(Business)
+admin.site.register(Post)
+
 admin.site.register(PoliceCenters)
 admin.site.register(HealthCenter)
