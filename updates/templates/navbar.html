@@ -27,6 +27,18 @@
 
     <a class="navbar-brand" href="{%url 'contacts'%}">Police and health centres</a>
 
+
+
+
+
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find busineses in the neighborhood<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'neighbourhood' 40 %}">Ngumba</a></li>
+            <li><a href="{% url 'neighbourhood' 41 %}">Juja</a></li>
+            <li><a href="{% url 'neighbourhood' 42 %}">Thika</a></li>
+
+            </ul>
+
     </div>
 
       <div class="col-sm-4 col-md-4 navbar-right">

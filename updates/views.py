@@ -21,6 +21,10 @@ def index(request):
     return render(request,'index.html',{"businesses":businesses,"neighborhoods":neighborhoods,"posts":posts})
 
 
+def neighbourhood(request,neighborhood_id):
+    businesses=Business.objects.filter(neighborhood_id=neighborhood_id)
+
+    return render(request,'neighbourhood.html',{"businesses":businesses})
 def contacts(request):
     police=PoliceCenters.get_all_police()
     health=HealthCenter.get_all_health()

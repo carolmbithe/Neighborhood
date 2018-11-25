@@ -72,6 +72,11 @@ class Business(models.Model):
 
     # def update_business(self):
 
+    @classmethod
+    def filter_by_neighborhood(cls,neighborhood_id):
+        businesses=cls.objects.filter(id=neighborhood_id)
+        return businesses
+
 
     @classmethod
     def find_business_by_id(cls,business_id):
@@ -89,6 +94,8 @@ class Business(models.Model):
     def search_by_business_name(cls,search_term):
         businesses = cls.objects.filter(business_name__icontains=search_term)
         return businesses
+
+
 
 class Post(models.Model):
     post_image=models.ImageField(upload_to='posts',null=True)
