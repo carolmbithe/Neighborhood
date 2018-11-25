@@ -105,3 +105,23 @@ class Post(models.Model):
         self.save()
     def delete_post(self):
         self.delete()
+
+class HealthCenter(models.Model):
+    name = models.CharField(max_length = 50)
+    location=models.CharField(max_length =50)
+    contact=models.CharField(max_length=40)
+
+    @classmethod
+    def get_all_health(cls):
+        health=cls.objects.all()
+        return health
+
+class PoliceCenters(models.Model):
+    name = models.CharField(max_length = 50)
+    location=models.CharField(max_length =50)
+    contact=models.CharField(max_length=40)
+
+    @classmethod
+    def get_all_police(cls):
+        police=cls.objects.all()
+        return police

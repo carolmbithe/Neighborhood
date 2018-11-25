@@ -1,0 +1,53 @@
+{% extends 'base.html'%}
+
+{% block content %}
+{{block.super}}
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6">
+      <p>Police information</p>
+  {% for info in police %}
+            <ul>
+            <p><strong>Police station name</strong>{{info.name}}
+            <strong>Neighbrhood</strong>{{info.location}}
+            <strong>Contact</strong>{{info.contact}}</p>
+
+          </ul>
+
+
+  {% empty %}
+
+      <h2 class="text-center">No contact information </h2>
+
+            {% endfor %}
+
+          </div>
+
+          <div class="col-md-6">
+            <p>Health information</p>
+        {% for info in health %}
+
+                  <ul>
+                  <li><strong>Healthe Center name</strong>{{info.name}}
+                  <strong>Neighborhood</strong>{{info.location}}
+                  <strong>Contact</strong>{{info.contact}}</li>
+
+                </ul>
+
+
+        {% empty %}
+
+            <h2 class="text-center">No contact information </h2>
+
+                  {% endfor %}
+
+                </div>
+
+
+  </div>
+
+</div>
+
+
+{%endblock%}

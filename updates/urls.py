@@ -15,6 +15,8 @@ urlpatterns=[
     url(r'^update/neighborhood$',views.update_neighborhood,name='update-neighborhood'),
     url(r'^post/',views.post,name='post'),
     url(r'^business/',views.business,name='business'),
+    url(r'^contacts/',views.contacts,name='contacts'),
+
 
     url(r'^businessdetails/(\d+)',views.businessdetails,name ='businessdetails'),
 

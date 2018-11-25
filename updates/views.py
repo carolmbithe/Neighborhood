@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Business,NeighborHood,Userprofile,Post
+from .models import Business,NeighborHood,Userprofile,Post,PoliceCenters,HealthCenter
 from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm,NewBusinessForm
 
 
@@ -19,6 +19,13 @@ def index(request):
     posts=Post.get_all_posts()
 #
     return render(request,'index.html',{"businesses":businesses,"neighborhoods":neighborhoods,"posts":posts})
+
+
+def contacts(request):
+    police=PoliceCenters.get_all_police()
+    health=HealthCenter.get_all_health()
+#
+    return render(request,'contact.html',{"police":police,"health":health})
 #
 def post(request):
     current_user=request.user
