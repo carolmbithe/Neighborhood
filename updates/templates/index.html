@@ -15,18 +15,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body style="width:100%">
 {% block content %}
 {{block.super}}
 <div class="container">
+  <div class="col-xm-12 col-sm-12 col-md-12 col-lg-12">
+
+
   <body style="background-color:#D8DBDE">
 
 
-  <h1 style="color: DodgerBlue; border: 8px solid DodgerBlue; letter-spacing: 5px; padding: 10px;" class="text-center">Be in the loop</h1>
   <section>
     <div class="row">
 
-      <h1 style="color: blue; border: 4px solid blue; letter-spacing: 5px; padding: 10px;" class="text-center">Latest posts</h1>
+      <h1 style="color: blue; letter-spacing: 5px; padding: 10px;" class="text-center">Latest posts</h1>
       {% for post in posts %}
 
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
@@ -37,10 +39,9 @@
       <p><b>By:</b>{{post.owner}}</p>
         <img src="{{post.post_image.url}}" class="img-responsive" alt="Image">
         <p>{{post.post}}</p>
-        <a href="#" class="btn btn-info" role="button">Comment</a>
 
-        <!-- <a  data-toggle="modal" data-target="#settings" aria-hidden="true"style="color:black;" ><button type="button" class="btn btn-info" name="button"> Comment</button></a> -->
-
+        <a  data-toggle="modal" data-target="#settings" aria-hidden="true"style="color:black;" ><button type="button" class="btn btn-info" name="button"> Comment</button></a>
+        <a href="{% url 'comments' %}" class="btn btn-info" role="button">View  Comments</a>
 
       </div>
       {% empty %}
@@ -58,7 +59,7 @@
 
   <section>
     <div class="row">
-      <h1 style="color: blue; border: 3px solid blue; letter-spacing: 5px; padding: 10px;"class="text-center">Businesses around</h1>
+      <h1 style="color: blue; letter-spacing: 5px; padding: 10px;"class="text-center">Businesses around</h1>
 
       {% for business in businesses %}
 
@@ -86,7 +87,7 @@
 
   <section>
     <div class="row">
-      <h1 style="color: blue; border: 3px solid blue; letter-spacing: 5px; padding: 10px;"class="text-center">Other Neighbourhoods</h1>
+      <h1 style="color: blue; letter-spacing: 5px; padding: 10px;"class="text-center">Other Neighbourhoods</h1>
       {% for neighborhood in neighborhoods %}
 
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
@@ -114,7 +115,21 @@
   </section>
 
 </div>
+<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-body">
+            <form  action="{%url 'index' %}" method="post" enctype="multipart/form-data">
+              {%csrf_token%}
 
+              {% bootstrap_form form %}
+              <input type="submit" class="btn btn-success btn-lg" value="Post">
+            </form>
+          </div>
+      </div>
+  </div>
+</div>
+  </div>
 {%endblock%}
 </body>
 </html>

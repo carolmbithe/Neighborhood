@@ -75,7 +75,14 @@ class Business(models.Model):
     def delete_business(self):
         self.delete()
 
-    # def update_business(self):
+
+    def update_business(self):
+        self.business_image=business_image
+        self.business_name=business_name
+        self.user=location
+        self.neighborhood=neighborhood
+        self.email=email
+        self.save()
 
     @classmethod
     def filter_by_neighborhood(cls,neighborhood_id):
@@ -109,6 +116,8 @@ class Post(models.Model):
     neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE,blank=True,null=True)
     post=models.TextField()
 
+    def __str__(self):
+        return self.title
 
     @classmethod
     def get_all_posts(cls):
@@ -145,6 +154,8 @@ class Comment(models.Model):
     post = models.ForeignKey(Post,blank=True, on_delete=models.CASCADE,null=True,related_name='comment')
     commenter=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     comment=models.TextField(max_length =30)
+
+
 
     def delete_comment(self):
         self.delete()

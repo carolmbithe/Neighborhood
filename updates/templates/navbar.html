@@ -15,29 +15,24 @@
         color: #ffffff
         }
         </style>
-  <nav class="navbar navbar-inverse">
+  <nav class="navbar">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="{%url 'index'%}">Home</a>
       <a class="navbar-brand" href="/admin">Admin</a>
 
-      <a class="navbar-brand" href="{%url 'business'%}">Add a business</a>
+      <a class="navbar-brand" href="{%url 'business'%}">Business</a>
 
-      <a class="navbar-brand" href="{%url 'post'%}">Add a post</a>
+      <a class="navbar-brand" href="{%url 'post'%}">Post</a>
 
-    <a class="navbar-brand" href="{%url 'contacts'%}">Police and health centres</a>
+    <a class="navbar-brand" href="{%url 'contacts'%}">Police and health </a>
+    <a class="navbar-brand" class="dropdown-toggle"  data-toggle="dropdown" href="#">Busineses Neighborhood<span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="{% url 'neighbourhood' 40 %}">Ngumba</a></li>
+      <li><a href="{% url 'neighbourhood' 41 %}">Juja</a></li>
+      <li><a href="{% url 'neighbourhood' 42 %}">Thika</a></li>
 
-
-
-
-
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Find busineses in the neighborhood<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="{% url 'neighbourhood' 40 %}">Ngumba</a></li>
-            <li><a href="{% url 'neighbourhood' 41 %}">Juja</a></li>
-            <li><a href="{% url 'neighbourhood' 42 %}">Thika</a></li>
-
-            </ul>
+      </ul>
 
     </div>
 
