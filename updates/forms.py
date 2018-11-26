@@ -1,4 +1,4 @@
-from .models import Business,NeighborHood,Userprofile,Post
+from .models import Business,NeighborHood,Userprofile,Post,Comment
 from django import forms
 
 
@@ -26,3 +26,8 @@ class NewPostForm(forms.ModelForm):
     class Meta:
         model=Post
         exclude=['owner']
+
+class NewCommentForm(forms.ModelForm):
+    class Meta:
+        model=Comment
+        exclude=['commenter']

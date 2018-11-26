@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Business,NeighborHood,Userprofile,Post,PoliceCenters,HealthCenter
-from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm,NewBusinessForm
+from .forms import NewProfileForm,NewNeighborhoodForm,UpdateForm,NewPostForm,NewBusinessForm,NewCommentForm
 
 
 
@@ -20,6 +20,21 @@ def index(request):
 #
     return render(request,'index.html',{"businesses":businesses,"neighborhoods":neighborhoods,"posts":posts})
 
+def new_comment(request,post_id):
+    current_user=request.user
+    if request.method == 'POST':
+        form =NewCommentForm(request.POST,request.FILES)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.post = post_id
+
+            comment.commenter = current_user
+
+            comment.save()
+        return redirect('index')
+    else:
+        form=NewCommentForm()
+    return render(request,'comment.html',{"form":form})
 
 def neighbourhood(request,neighborhood_id):
     businesses=Business.objects.filter(neighborhood_id=neighborhood_id)

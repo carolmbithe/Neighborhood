@@ -14,6 +14,7 @@
 <body>
 {% block content %}
 {{block.super}}
+<body style="background-color:#CACFD2">
 <div class="container">
   <h1><strong>Name</strong>{{neighborhood.name}}</h1>
 
@@ -23,5 +24,6 @@
 <p><strong>Location</strong>{{neighborhood.location}}</p>
 <p><strong>Count</strong>{{neighborhood.occupants_count}}</p>
 </div>
+</body>
 
 {%endblock%}

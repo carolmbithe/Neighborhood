@@ -1,5 +1,8 @@
 
 {%extends 'base.html'%}
+{% load staticfiles %}
+{% load static %}
+
 
 {% load bootstrap3 %}
 
@@ -16,21 +19,29 @@
 {% block content %}
 {{block.super}}
 <div class="container">
+  <body style="background-color:#D8DBDE">
 
-  <h1 class="text-center">Be in the loop</h1>
+
+  <h1 style="color: DodgerBlue; border: 8px solid DodgerBlue; letter-spacing: 5px; padding: 10px;" class="text-center">Be in the loop</h1>
   <section>
     <div class="row">
-      <h1 class="text-center">Latest posts</h1>
+
+      <h1 style="color: blue; border: 4px solid blue; letter-spacing: 5px; padding: 10px;" class="text-center">Latest posts</h1>
       {% for post in posts %}
 
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">
 
 
 
-      <p>{{post.title}}</p>
-      <p>{{post.owner}}</p>
+      <p><b>Post Title:</b>{{post.title}}</p>
+      <p><b>By:</b>{{post.owner}}</p>
         <img src="{{post.post_image.url}}" class="img-responsive" alt="Image">
         <p>{{post.post}}</p>
+        <a href="#" class="btn btn-info" role="button">Comment</a>
+
+        <!-- <a  data-toggle="modal" data-target="#settings" aria-hidden="true"style="color:black;" ><button type="button" class="btn btn-info" name="button"> Comment</button></a> -->
+
+
       </div>
       {% empty %}
 
@@ -47,7 +58,7 @@
 
   <section>
     <div class="row">
-      <h1 class="text-center">Latest posts</h1>
+      <h1 style="color: blue; border: 3px solid blue; letter-spacing: 5px; padding: 10px;"class="text-center">Businesses around</h1>
 
       {% for business in businesses %}
 
@@ -55,9 +66,10 @@
 
 
 
-      <p>{{business.business_name}}</p>
+      <p><b>Name</b>{{business.business_name}}</p>
         <img src="{{business.business_image.url}}" class="img-responsive" alt="Image">
-        <p>{{business.neighborhood}}</p>
+        <p><b>Neighbourhood</b>{{business.neighborhood}}</p>
+
       </div>
       {% empty %}
 
@@ -74,7 +86,7 @@
 
   <section>
     <div class="row">
-      <h1 class="text-center">Other Neighbourhoods</h1>
+      <h1 style="color: blue; border: 3px solid blue; letter-spacing: 5px; padding: 10px;"class="text-center">Other Neighbourhoods</h1>
       {% for neighborhood in neighborhoods %}
 
       <div class="col-md-4 col-lg-4 col-sm-4 col-xs-6">

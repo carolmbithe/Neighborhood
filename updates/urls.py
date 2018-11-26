@@ -11,6 +11,7 @@ urlpatterns=[
     url(r'^edit/profile$',views.edit_profile,name='edit-profile'),
     # url(r'^update/profile/(?P<user_name>\w{0,50})',views.update_profile,name='update-profile'),
     url(r'^update/profile/(\d+)',views.update_profile,name='update-profile'),
+    url(r'^new/comment/(\d+)',views.new_comment,name='comment'),
 
     url(r'^update/neighborhood$',views.update_neighborhood,name='update-neighborhood'),
     url(r'^post/',views.post,name='post'),

@@ -19,7 +19,15 @@ class NeighborHood(models.Model):
     def delete_neighborhood(self):
         self.delete()
 
-    # def update_neighborhood():
+    def update_neighborhood(self):
+        self.neighborhood_image=neighborhood_image
+        self.name=name
+        self.location=location
+        self.occupants_count=occupants_count
+        self.save()
+
+
+
 
 
     def update_occupants(self,occupants_count):
@@ -101,6 +109,7 @@ class Post(models.Model):
     post_image=models.ImageField(upload_to='posts',null=True)
     owner=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
     title=models.CharField(max_length =30)
+    neighborhood=models.ForeignKey(NeighborHood,on_delete=models.CASCADE,blank=True,null=True)
     post=models.TextField()
 
 
@@ -132,3 +141,55 @@ class PoliceCenters(models.Model):
     def get_all_police(cls):
         police=cls.objects.all()
         return police
+
+
+
+class Comment(models.Model):
+    post = models.ForeignKey(Post,blank=True, on_delete=models.CASCADE,null=True,related_name='comment')
+    commenter=models.ForeignKey(User,on_delete=models.CASCADE,null=True)
+    comment=models.TextField(max_length =30)
+
+    def delete_comment(self):
+        self.delete()
+
+    def save_comment(self):
+        self.save()
+
+    @classmethod
+    def get_comments(cls):
+        comments=cls.objects.all()
+        return comments
+
+    @classmethod
+    def get_comments_by_post_id(cls,post_id):
+        comments=cls.objects.filter(id=post_id)
+        return comments
+
+
+class Category(models.Model):
+    name=models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name_plural = "Categories"
+
+
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+class Location(models.Model):
+    name=models.CharField(max_length=30)
+
+
+    def __str__(self):
+        return self.name
+
+    def save_location(self):
+        self.save()
+
+    def delete_location(self):
+        self.delete()
