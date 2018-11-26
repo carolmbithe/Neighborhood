@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Business,NeighborHood,Userprofile,Post
+from .models import Business,NeighborHood,Userprofile,Post,Comment
 
 
 # Create your tests here.
@@ -103,3 +103,28 @@ class PostTestClass(TestCase):
 
         self.new_post.save_post()
         self.new_post.delete_post()
+
+
+class CommentTestCase(TestCase):
+    '''
+    setup
+    '''
+    def setUp(self):
+        self.new_comment = Comment(comment='Thank you')
+    '''
+    test instance of comment
+    '''
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_comment,Comment))
+        '''
+        test for save instance of comment
+        '''
+    def test_save_comment(self):
+        self.comment.save_comment()
+        name = Comment.objects.all()
+        self.assertTrue(len(name)>0)
+
+    def test_delete_method(self):
+
+        self.new_comment.save_comment()
+        self.new_comment.delete_comment()

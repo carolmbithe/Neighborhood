@@ -115,7 +115,7 @@ def update_neighborhood(request):
             userprofile=form.save(commit=False)
             userprofile.user_name = current_user
             userprofile.save()
-        return redirect('update-profile')
+        return redirect('profile')
     else:
         form=NewNeighborhoodForm()
     return render(request,'update_neighborhood.html',{"form":form})

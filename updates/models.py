@@ -27,9 +27,6 @@ class NeighborHood(models.Model):
         self.save()
 
 
-
-
-
     def update_occupants(self,occupants_count):
         self.occupants_count=occupants_count
         self.save()
