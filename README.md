@@ -4,7 +4,7 @@ Python 3.6 Application
 ## By Caroline Mumo
 
 ## Description of the application
-An application that allows you to be in the loop about everything happening in your neighborhood. From contact information of different handyman to meeting announcements or even alerts.
+An application that allows you to be in the loop about everything happening in your neighborhood. From contact information of different handyman to meeting announcements or even alerts.It also allows users to add posts and add a business
 
 ## Project setup instructions
 You can install this app by cloning the repository from this link https://github.com/carolmbithe/Neighborhood.git</br  >
